@@ -6,6 +6,27 @@ main {
     padding: 1rem 0;
   }
   
+  h1 {
+    font-size: 1.8rem;
+    padding: 1rem 0;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+    padding: 0.5rem 0;
+  }
+  
   .rating span {
     margin: 0.1rem;
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1200px) {
+     
+    /* for cart quantity */
+    .product-page-section {
+      min-width: 350px;
+    }
+    .product-page-section:nth-child(3) {
+      margin: 20px 0 0 50%;
+    }
   }
