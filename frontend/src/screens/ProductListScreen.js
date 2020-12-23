@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Row, Col } from 'react-bootstrap'
@@ -6,16 +5,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import {
-  listProducts,
   deleteProduct,
   createProduct,
+  listMyProducts,
 } from '../actions/productActions'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
 const ProductListScreen = ({ history, match }) => {
   const dispatch = useDispatch()
-
-  const productList = useSelector((state) => state.productList)
+ 
+  const productList = useSelector((state) => state.productListMy)
   const { loading, error, products } = productList
 
   const productDelete = useSelector((state) => state.productDelete)
@@ -44,7 +43,7 @@ const ProductListScreen = ({ history, match }) => {
     if (successCreate) {
       history.push(`/admin/product/${createdProduct._id}/edit`)
     } else {
-      dispatch(listProducts())
+      dispatch(listMyProducts())
     }
   }, [
     dispatch,

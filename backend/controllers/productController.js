@@ -156,6 +156,15 @@ const createProductReview = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc    Get logged in vendos' products
+// @route   GET /api/products/myproducts
+// @access  Private
+const getMyProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({ user: req.user._id })
+  res.json(products)
+})
+
+
 export {
   getProducts,
   getProductById,
@@ -163,4 +172,5 @@ export {
   createProduct,
   updateProduct,
   createProductReview,
+  getMyProducts
 }
