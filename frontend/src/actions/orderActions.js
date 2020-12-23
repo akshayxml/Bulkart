@@ -19,6 +19,7 @@ import {
   ORDER_DELIVER_SUCCESS,
   ORDER_DELIVER_REQUEST,
 } from '../constants/orderConstants'
+import { CART_RESET,} from '../constants/cartConstants'
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {
@@ -117,11 +118,14 @@ export const payOrder = (orderId) => async (
       paymentResult,
       config
     )
-
+ 
     dispatch({
       type: ORDER_PAY_SUCCESS,
       payload: data,
     })
+    dispatch({ type: CART_RESET, })
+    localStorage.setItem("cartItems", []);
+
   } catch (error) {
 
     console.log(error)

@@ -65,11 +65,8 @@ const createProduct = asyncHandler(async (req, res) => {
     price: 0,
     user: req.user._id,
     image: '/images/sample.jpg',
-    brand: 'Sample brand',
-    category: 'Sample category',
-    countInStock: 0,
+    bundleQuantity: 0,
     numReviews: 0,
-    description: 'Sample description',
   })
 
   const createdProduct = await product.save()
@@ -83,11 +80,8 @@ const updateProduct = asyncHandler(async (req, res) => {
   const {
     name,
     price,
-    description,
     image,
-    brand,
-    category,
-    countInStock,
+    bundleQuantity,
   } = req.body
 
   const product = await Product.findById(req.params.id)
@@ -96,11 +90,8 @@ const updateProduct = asyncHandler(async (req, res) => {
     if(JSON.stringify(req.user._id) === JSON.stringify(product.user)){
       product.name = name
       product.price = price
-      product.description = description
       product.image = image
-      product.brand = brand
-      product.category = category
-      product.countInStock = countInStock
+      product.bundleQuantity = bundleQuantity
 
       const updatedProduct = await product.save()
       res.json(updatedProduct)

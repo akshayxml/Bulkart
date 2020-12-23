@@ -11,7 +11,7 @@ const CartScreen = ({ match, location, history }) => {
   const qty = location.search ? Number(location.search.split('=')[1]) : 1
 
   const dispatch = useDispatch()
-
+ 
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
 
@@ -59,7 +59,7 @@ const CartScreen = ({ match, location, history }) => {
                         )
                       }
                     >
-                      {[...Array(item.countInStock).keys()].map((x) => (
+                      {[...Array(item.bundleQuantity).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
                           {x + 1}
                         </option>

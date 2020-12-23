@@ -32,18 +32,6 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    brand: {
-      type: String,
-      required: true,
-    },
-    category: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
     reviews: [reviewSchema],
     /*Average rating*/
     rating: {
@@ -61,7 +49,7 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
-    countInStock: {
+    bundleQuantity: {
       type: Number,
       required: true,
       default: 0,

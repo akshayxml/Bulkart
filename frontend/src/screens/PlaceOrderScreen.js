@@ -46,7 +46,6 @@ const PlaceOrderScreen = ({ history }) => {
       createOrder({
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
-        paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
         shippingPrice: cart.shippingPrice,
         taxPrice: cart.taxPrice,
@@ -69,12 +68,6 @@ const PlaceOrderScreen = ({ history }) => {
                 {cart.shippingAddress.postalCode},{' '}
                 {cart.shippingAddress.country}
               </p>
-            </ListGroup.Item>
-
-            <ListGroup.Item>
-              <h2>Payment Method</h2>
-              <strong>Method: </strong>
-              {cart.paymentMethod}
             </ListGroup.Item>
 
             <ListGroup.Item>

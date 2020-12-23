@@ -15,10 +15,7 @@ const ProductEditScreen = ({ match, history }) => {
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
   const [image, setImage] = useState('')
-  const [brand, setBrand] = useState('')
-  const [category, setCategory] = useState('')
-  const [countInStock, setCountInStock] = useState(0)
-  const [description, setDescription] = useState('')
+  const [bundleQuantity, setBundleQuantity] = useState(0)
   const [uploading, setUploading] = useState(false) 
 
   const dispatch = useDispatch()
@@ -44,10 +41,7 @@ const ProductEditScreen = ({ match, history }) => {
         setName(product.name)
         setPrice(product.price)
         setImage(product.image)
-        setBrand(product.brand)
-        setCategory(product.category)
-        setCountInStock(product.countInSock)
-        setDescription(product.description)
+        setBundleQuantity(product.bundleQuantity)
       }
     }
   }, [dispatch, history, productId, product, successUpdate])
@@ -83,10 +77,7 @@ const ProductEditScreen = ({ match, history }) => {
         name,
         price,
         image,
-        brand,
-        category,
-        description,
-        countInStock,
+        bundleQuantity,
       })
     )
   }
@@ -143,43 +134,13 @@ const ProductEditScreen = ({ match, history }) => {
               {uploading && <Loader />}
             </Form.Group>
 
-            <Form.Group controlId='brand'>
-              <Form.Label>Brand</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter brand'
-                value={brand}
-                onChange={(e) => setBrand(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId='countInStock'>
-              <Form.Label>Count In Stock</Form.Label>
+            <Form.Group controlId='bundleQuantity'>
+            <Form.Label>Quantity in the bundle</Form.Label>
               <Form.Control
                 type='number'
-                placeholder='Enter countInStock'
-                value={countInStock}
-                onChange={(e) => setCountInStock(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId='category'>
-              <Form.Label>Category</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter category'
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId='description'>
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter description'
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                placeholder='Enter bundle quantity'
+                value={bundleQuantity}
+                onChange={(e) => setBundleQuantity(e.target.value)}
               ></Form.Control>
             </Form.Group>
 

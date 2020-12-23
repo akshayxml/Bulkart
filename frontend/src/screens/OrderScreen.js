@@ -90,11 +90,7 @@ const OrderScreen = ({ match }) => {
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Payment Method</h2>
-              <p>
-                <strong>Method: </strong>
-                {order.paymentMethod}
-              </p>
+              <h2>Payment</h2>
               {order.isPaid ? (
                 <Message variant='success'>Paid on {order.paidAt}</Message>
               ) : (

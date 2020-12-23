@@ -81,9 +81,6 @@ const ProductScreen = ({ history, match }) => {
                   />
                 </ListGroup.Item>
                 <ListGroup.Item>Price: ₹{product.price}</ListGroup.Item>
-                <ListGroup.Item>
-                  Description: {product.description}
-                </ListGroup.Item>
               </ListGroup>
             </Col>
             <Col md={3}>
@@ -100,14 +97,14 @@ const ProductScreen = ({ history, match }) => {
 
                   <ListGroup.Item>
                     <Row>
-                      <Col>Status:</Col>
+                      <Col>Bundle Quantity:</Col>
                       <Col>
-                        {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
+                        {product.bundleQuantity}
                       </Col>
                     </Row>
                   </ListGroup.Item>
 
-                  {product.countInStock > 0 && (
+                  {product.bundleQuantity > 0 && (
                     <ListGroup.Item>
                       <Row>
                         <Col>Qty</Col>
@@ -117,7 +114,7 @@ const ProductScreen = ({ history, match }) => {
                             value={qty}
                             onChange={(e) => setQty(e.target.value)}
                           >
-                            {[...Array(product.countInStock).keys()].map(
+                            {[...Array(product.bundleQuantity).keys()].map(
                               (x) => (
                                 <option key={x + 1} value={x + 1}>
                                   {x + 1}
@@ -135,7 +132,7 @@ const ProductScreen = ({ history, match }) => {
                       onClick={addToCartHandler}
                       className='btn-block'
                       type='button'
-                      disabled={product.countInStock === 0}
+                      disabled={product.bundleQuantity === 0}
                     >
                       Add To Cart
                     </Button>
