@@ -16,6 +16,7 @@ const ProductEditScreen = ({ match, history }) => {
   const [price, setPrice] = useState(0)
   const [image, setImage] = useState('')
   const [bundleQuantity, setBundleQuantity] = useState(0)
+  const [remainingQuantity, setRemainingQuantity] = useState(0)
   const [uploading, setUploading] = useState(false) 
 
   const dispatch = useDispatch()
@@ -42,6 +43,7 @@ const ProductEditScreen = ({ match, history }) => {
         setPrice(product.price)
         setImage(product.image)
         setBundleQuantity(product.bundleQuantity)
+        setRemainingQuantity(product.remainingQuantity)
       }
     }
   }, [dispatch, history, productId, product, successUpdate])
@@ -78,8 +80,14 @@ const ProductEditScreen = ({ match, history }) => {
         price,
         image,
         bundleQuantity,
+        remainingQuantity,
       })
     )
+  }
+
+  const setQuantity = (e) => {
+    setBundleQuantity(e);
+    setRemainingQuantity(e);
   }
 
   return (
@@ -140,7 +148,9 @@ const ProductEditScreen = ({ match, history }) => {
                 type='number'
                 placeholder='Enter bundle quantity'
                 value={bundleQuantity}
-                onChange={(e) => setBundleQuantity(e.target.value)}
+                onChange={(e) => 
+                    setQuantity(e.target.value)
+                  }
               ></Form.Control>
             </Form.Group>
 

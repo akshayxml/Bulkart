@@ -54,6 +54,10 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+    remainingQuantity: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,

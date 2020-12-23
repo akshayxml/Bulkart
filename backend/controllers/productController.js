@@ -71,7 +71,7 @@ const createProduct = asyncHandler(async (req, res) => {
 
   const createdProduct = await product.save()
   res.status(201).json(createdProduct)
-})
+}) 
 
 // @desc    Update a product
 // @route   PUT /api/products/:id
@@ -82,6 +82,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     price,
     image,
     bundleQuantity,
+    remainingQuantity,
   } = req.body
 
   const product = await Product.findById(req.params.id)
@@ -92,6 +93,7 @@ const updateProduct = asyncHandler(async (req, res) => {
       product.price = price
       product.image = image
       product.bundleQuantity = bundleQuantity
+      product.remainingQuantity = remainingQuantity
 
       const updatedProduct = await product.save()
       res.json(updatedProduct)
