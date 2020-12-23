@@ -49,7 +49,7 @@ const OrderScreen = ({ match }) => {
 
   const successPaymentHandler = () => {
     dispatch(payOrder(orderId))
-  }
+  } 
 
   const deliverHandler = () => {
     dispatch(deliverOrder(order))

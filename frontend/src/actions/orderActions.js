@@ -20,6 +20,7 @@ import {
   ORDER_DELIVER_REQUEST,
 } from '../constants/orderConstants'
 import { CART_RESET,} from '../constants/cartConstants'
+import OrderScreen from '../screens/OrderScreen'
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {
@@ -123,6 +124,8 @@ export const payOrder = (orderId) => async (
       type: ORDER_PAY_SUCCESS,
       payload: data,
     })
+
+    //Resets cart items to empty
     dispatch({ type: CART_RESET, })
     localStorage.setItem("cartItems", []);
 
