@@ -16,7 +16,7 @@ const OrderListScreen = ({ history }) => {
   const { userInfo } = userLogin
 
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
+    if (userInfo && userInfo.isVendor) {
       dispatch(listOrders())
     } else {
       history.push('/login')

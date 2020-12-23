@@ -13,7 +13,7 @@ const UserEditScreen = ({ match, history }) => {
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [isAdmin, setisAdmin] = useState(false)
+  const [isVendor, setisVendor] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -37,14 +37,14 @@ const UserEditScreen = ({ match, history }) => {
       } else {
         setName(user.name)
         setEmail(user.email)
-        setisAdmin(user.isAdmin)
+        setisVendor(user.isVendor)
       }
     }
   }, [dispatch, history, userId, user, successUpdate])
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(updateUser({ _id: userId, name, email, isAdmin }))
+    dispatch(updateUser({ _id: userId, name, email, isVendor }))
   }
 
   return (
@@ -82,12 +82,12 @@ const UserEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='isAdmin'>
+            <Form.Group controlId='isVendor'>
               <Form.Check
                 type='checkbox'
                 label='Is Admin'
-                checked={isAdmin}
-                onChange={(e) => setisAdmin(e.target.checked)}
+                checked={isVendor}
+                onChange={(e) => setisVendor(e.target.checked)}
               ></Form.Check>
             </Form.Group>
 

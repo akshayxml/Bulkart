@@ -175,7 +175,7 @@ const OrderScreen = ({ match }) => {
                 </ListGroup.Item>
               )}
               {loadingDeliver && <Loader />}
-              {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+              {userInfo.isVendor && order.isPaid && !order.isDelivered && (
                 <ListGroup.Item>
                   <Button
                     type='button'

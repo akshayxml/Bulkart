@@ -45,7 +45,7 @@ const getOrderById = asyncHandler(async (req, res) => {
     'name email'
   )
 
-  if (order && (req.user.isAdmin || order.user._id.equals(req.user._id))) {
+  if (order && (req.user.isVendor || order.user._id.equals(req.user._id))) {
     res.json(order)
   } else {
     res.status(404)

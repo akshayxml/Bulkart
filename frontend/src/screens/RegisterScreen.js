@@ -12,6 +12,7 @@ const RegisterScreen = ({ location, history }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [isVendor, setIsVendor] = useState('')
   const [message, setMessage] = useState(null)
 
   const dispatch = useDispatch()
@@ -33,7 +34,7 @@ const RegisterScreen = ({ location, history }) => {
       setMessage('Passwords do not match')
     } else {
       setMessage(null);
-      dispatch(register(name, email, password))
+      dispatch(register(name, email, password, isVendor))
     }
   }
 
@@ -82,6 +83,15 @@ const RegisterScreen = ({ location, history }) => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>
+        </Form.Group>
+
+        <Form.Group controlId='isVendor'>
+          <Form.Check
+            type='checkbox'
+            label='Register as a vendor'
+            checked={isVendor}
+            onChange={(e) => setIsVendor(e.target.checked)}
+          ></Form.Check>
         </Form.Group>
 
         <Button type='submit' variant='primary'>
