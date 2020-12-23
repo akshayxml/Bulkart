@@ -57,7 +57,7 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @access  Private
 const updateOrderToPaid = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id)
-
+  
   if (order) {
     order.isPaid = true
     order.paidAt = Date.now()
@@ -72,7 +72,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
       const item = order.orderItems[index];
       const product = await Product.findById(item.product);
       product.remainingQuantity -= item.qty;
-      console.log(product.remainingQuantity);
+      
       await product.save();
     }
 

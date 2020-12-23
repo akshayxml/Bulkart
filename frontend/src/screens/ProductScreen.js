@@ -80,7 +80,7 @@ const ProductScreen = ({ history, match }) => {
                     text={`${product.numReviews} reviews`}
                   />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ₹{product.price}</ListGroup.Item>
+                <ListGroup.Item>Vendor: {product.user && product.user.name}</ListGroup.Item>
               </ListGroup>
             </Col>
             <Col md={3}>
@@ -97,14 +97,14 @@ const ProductScreen = ({ history, match }) => {
 
                   <ListGroup.Item>
                     <Row>
-                      <Col>Bundle Quantity:</Col>
+                      <Col>Stock Left:</Col>
                       <Col>
-                        {product.bundleQuantity}
+                        {product.remainingQuantity}/{product.bundleQuantity}
                       </Col>
                     </Row>
                   </ListGroup.Item>
 
-                  {product.bundleQuantity > 0 && (
+                  {product.remainingQuantity > 0 && (
                     <ListGroup.Item>
                       <Row>
                         <Col>Qty</Col>
@@ -114,7 +114,7 @@ const ProductScreen = ({ history, match }) => {
                             value={qty}
                             onChange={(e) => setQty(e.target.value)}
                           >
-                            {[...Array(product.bundleQuantity).keys()].map(
+                            {[...Array(product.remainingQuantity).keys()].map(
                               (x) => (
                                 <option key={x + 1} value={x + 1}>
                                   {x + 1}
@@ -132,7 +132,7 @@ const ProductScreen = ({ history, match }) => {
                       onClick={addToCartHandler}
                       className='btn-block'
                       type='button'
-                      disabled={product.bundleQuantity === 0}
+                      disabled={product.remainingQuantity === 0}
                     >
                       Add To Cart
                     </Button>
