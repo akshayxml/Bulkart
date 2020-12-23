@@ -13,7 +13,7 @@ const UserEditScreen = ({ match, history }) => {
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [isAdmin, setIsAdmin] = useState(false)
+  const [isAdmin, setisAdmin] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -37,7 +37,7 @@ const UserEditScreen = ({ match, history }) => {
       } else {
         setName(user.name)
         setEmail(user.email)
-        setIsAdmin(user.isAdmin)
+        setisAdmin(user.isAdmin)
       }
     }
   }, [dispatch, history, userId, user, successUpdate])
@@ -82,12 +82,12 @@ const UserEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='isadmin'>
+            <Form.Group controlId='isAdmin'>
               <Form.Check
                 type='checkbox'
                 label='Is Admin'
                 checked={isAdmin}
-                onChange={(e) => setIsAdmin(e.target.checked)}
+                onChange={(e) => setisAdmin(e.target.checked)}
               ></Form.Check>
             </Form.Group>
 
