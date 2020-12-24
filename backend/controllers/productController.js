@@ -173,6 +173,17 @@ const getDispatchReadyProducts = asyncHandler(async (req, res) => {
   res.json(products)
 })
 
+// @desc    Get logged in vendor's dispatched products
+// @route   GET /api/products/dispatched
+// @access  Private/Admin
+const getDispatchedProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({ 
+    user: req.user._id,
+    status: 'Dispatched',
+  })
+  res.json(products)
+})
+
 // @desc    Update product status to dispatched
 // @route   PUT /api/products/dispatchProduct/:id
 // @access  Private/Admin
@@ -201,4 +212,5 @@ export {
   getMyWaitlistProducts,
   getDispatchReadyProducts,
   dispatchProduct,
+  getDispatchedProducts,
 }

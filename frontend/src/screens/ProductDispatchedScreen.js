@@ -4,44 +4,34 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import {
-  listDispatchReadyProducts,
-  dispatchProduct,
+    listDispatchedProducts,
 } from '../actions/productActions'
 
-const ProductDispatchReadyScreen = ({ history }) => {
+const ProductDispatchedScreen = ({ history }) => {
   const dispatch = useDispatch()
  
-  const productList = useSelector((state) => state.productDispatchReady)
+  const productList = useSelector((state) => state.productDispatchedList)
   const { loading, error, products } = productList
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
   
-  const productDispatch = useSelector((state) => state.productDispatch)
-  const { loading: dispatchLoading, error: dispatchError } = productDispatch
-
   useEffect(() => {
     if (!userInfo.isVendor) { 
       history.push('/login')
     }
-    dispatch(listDispatchReadyProducts())
+    dispatch(listDispatchedProducts())
   }, [
     dispatch,
     history,
     userInfo,
-    productDispatch,
   ])
-
-  const dispatchHandler = (id) => {
-    dispatch(dispatchProduct(id))
-  }
 
   return (
     <>
       <Row className='align-items-center'>
         <Col>
-          <h1>Ready to Dispatch</h1>
-          {dispatchError && <Message variant='danger'>{dispatchError}</Message>}
+          <h1>Dispatched Products</h1>
         </Col>
       </Row>
       
@@ -55,8 +45,8 @@ const ProductDispatchReadyScreen = ({ history }) => {
             <tr>
               <th>NAME</th>
               <th>PRICE</th>
-              <th>ORDERED</th>
-              <th></th>
+              <th>QUANTITY</th>
+              <th>TOTAL</th>
             </tr>
           </thead>
           <tbody>
@@ -64,13 +54,8 @@ const ProductDispatchReadyScreen = ({ history }) => {
               <tr key={product._id}>
                 <td>{product.name}</td>
                 <td>₹{product.price}</td>
-                <td>{product.bundleQuantity - product.remainingQuantity}/{product.bundleQuantity}
-                </td>
-                <td>
-                <Button type='submit' variant='primary' onClick={() => dispatchHandler(product._id)}>
-                    Dispatch
-                </Button>
-                </td>
+                <td>{product.bundleQuantity}</td>
+                <td>₹{product.price * product.bundleQuantity}</td>
               </tr>
             ))} 
           </tbody>
@@ -80,4 +65,4 @@ const ProductDispatchReadyScreen = ({ history }) => {
   )
 }
 
-export default ProductDispatchReadyScreen
+export default ProductDispatchedScreen

@@ -54,14 +54,14 @@ const Header = () => {
               )}
               {userInfo && userInfo.isVendor && (
                 <NavDropdown title='Products' id='adminmenu'>
-                  {/* <LinkContainer to='/admin/userlist'>
-                    <NavDropdown.Item>Users</NavDropdown.Item>
-                  </LinkContainer> */}
                   <LinkContainer to='/admin/productWaitinglist'>
                     <NavDropdown.Item>Waiting</NavDropdown.Item>
                   </LinkContainer> 
                   <LinkContainer to='/admin/productDispatchReady'>
                     <NavDropdown.Item>Ready to Dispatch</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/productDispatched'>
+                    <NavDropdown.Item>Dispatched Products</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
               )}
