@@ -1,7 +1,17 @@
 import path from 'path'
 import express from 'express'
 import multer from 'multer'
+import asyncHandler from 'express-async-handler'
 const router = express.Router()
+import pkg from 'cloudinary' 
+
+const cloudinary = pkg
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET
+})
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -34,8 +44,11 @@ const upload = multer({
   },
 })
 
-router.post('/', upload.single('image'), (req, res) => {
-  res.send(`/${req.file.path}`)
-})
+router.post('/', upload.single('image'), asyncHandler (async (req, res) => {
+  const uploadPhoto = await cloud.uploader.upload(`${req.file.path}`)
+  // console.log(uploadPhoto) // This will give you all the information back from the uploaded photo result
+  // console.log(uploadPhoto.url)  // This is what we want to send back now in the  res.send
+  res.send(uploadPhoto.url) 
+}))
 
 export default router

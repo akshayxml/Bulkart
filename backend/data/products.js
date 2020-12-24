@@ -1,7 +1,7 @@
 const products = [
   {
     name: 'JBL Wireless Over-EarHeadphones',
-    image: '/images/jbl.jpg',
+    image: 'https://res.cloudinary.com/bulkart/image/upload/v1608815959/jbl_qlxo9z.jpg',
     price: 2899.00,
     bundleQuantity: 30,
     remainingQuantity: 30,
@@ -10,7 +10,7 @@ const products = [
   },
   {
     name: 'Crocs LiteRide Mesh Slip On',
-    image: '/images/crocs.jpg',
+    image: 'https://res.cloudinary.com/bulkart/image/upload/v1608815963/crocs_xoyafy.jpg',
     price: 3599.00,
     bundleQuantity: 20,
     remainingQuantity: 20,
@@ -19,7 +19,7 @@ const products = [
   },
   {
     name: 'Think Like a Monk - by Jay Shetty',
-    image: '/images/book.jpg',
+    image: 'https://res.cloudinary.com/bulkart/image/upload/v1608815961/book_fv4mlq.jpg',
     price: 250.00,
     bundleQuantity: 100,
     remainingQuantity: 100,
@@ -28,7 +28,7 @@ const products = [
   },
   {
     name: 'Wildcraft Black HypaShield Supermask',
-    image: '/images/mask.jpg',
+    image: 'https://res.cloudinary.com/bulkart/image/upload/v1608815961/mask_nzwz3f.jpg',
     price: 399.00,
     bundleQuantity: 200,
     remainingQuantity: 200,
@@ -37,7 +37,7 @@ const products = [
   },
   {
     name: 'iPhone 11 Pro 256GB Memory',
-    image: '/images/phone.jpg',
+    image: 'https://res.cloudinary.com/bulkart/image/upload/v1608815962/phone_jxrwjr.jpg',
     price: 121300.00,
     bundleQuantity: 3,
     remainingQuantity: 3,
@@ -46,7 +46,7 @@ const products = [
   },
   {
     name: 'Logitech G-Series Gaming Mouse',
-    image: '/images/mouse.jpg',
+    image: 'https://res.cloudinary.com/bulkart/image/upload/v1608815961/mouse_mewjjf.jpg',
     price: 3449.00,
     bundleQuantity: 25,
     remainingQuantity: 25,
@@ -55,7 +55,7 @@ const products = [
   },
   {
     name: 'Fossil Black Chronograph Watch',
-    image: '/images/watch.jpg',
+    image: 'https://res.cloudinary.com/bulkart/image/upload/v1608815962/watch_grjcc0.jpg',
     price: 4559.00,
     bundleQuantity: 20,
     remainingQuantity: 20,
@@ -64,11 +64,11 @@ const products = [
   },
   {
     name: 'Sony Playstation 4 Pro White Version',
-    image: '/images/playstation.jpg',
+    image: 'https://res.cloudinary.com/bulkart/image/upload/v1608815958/playstation_hfkgg9.jpg',
     price: 29999.00,
     bundleQuantity: 10,
     remainingQuantity: 10,
-    rating: 0,
+    rating: 0, 
     numReviews: 0,
   },
 ]
