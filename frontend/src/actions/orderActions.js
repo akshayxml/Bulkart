@@ -88,18 +88,13 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
   }
 }
 
-export const payOrder = (orderId) => async (
-  dispatch,
-  getState
-) => {
+export const payOrder = (orderId) => async (dispatch, getState) => {
   try {
-    dispatch({
-      type: ORDER_PAY_REQUEST,
-    })
+    dispatch({ type: ORDER_PAY_REQUEST,})
 
     const {
       userLogin: { userInfo },
-    } = getState()
+    } = getState() 
 
     const config = {
       headers: {
@@ -107,17 +102,13 @@ export const payOrder = (orderId) => async (
         Authorization: `Bearer ${userInfo.token}`,
       },
     } 
-
+ 
     const paymentResult = {
       "id" : "development",
       "status" : "COMPLETED",
     };
 
-    const { data } = await axios.put(
-      `/api/orders/${orderId}/pay`,
-      paymentResult,
-      config
-    )
+    const { data } = await axios.put(`/api/orders/${orderId}/pay`,paymentResult,config)
  
     dispatch({
       type: ORDER_PAY_SUCCESS,

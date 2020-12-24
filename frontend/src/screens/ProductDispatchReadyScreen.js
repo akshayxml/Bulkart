@@ -5,9 +5,10 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import {
   listDispatchReadyProducts,
+  dispatchProduct,
 } from '../actions/productActions'
 
-const ProductWaitingListScreen = ({ history, match }) => {
+const ProductWaitingListScreen = ({ history }) => {
   const dispatch = useDispatch()
  
   const productList = useSelector((state) => state.productDispatchReady)
@@ -15,6 +16,9 @@ const ProductWaitingListScreen = ({ history, match }) => {
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
+  
+  const productDispatch = useSelector((state) => state.productDispatch)
+  const { loading: dispatchLoading, error: dispatchError } = productDispatch
 
   useEffect(() => {
     if (!userInfo.isVendor) { 
@@ -25,15 +29,22 @@ const ProductWaitingListScreen = ({ history, match }) => {
     dispatch,
     history,
     userInfo,
+    productDispatch,
   ])
+
+  const dispatchHandler = (id) => {
+    dispatch(dispatchProduct(id))
+  }
 
   return (
     <>
       <Row className='align-items-center'>
         <Col>
           <h1>Ready to Dispatch</h1>
+          {dispatchError && <Message variant='danger'>{dispatchError}</Message>}
         </Col>
       </Row>
+      
       {loading ? (
         <Loader />
       ) : error ? (
@@ -56,9 +67,9 @@ const ProductWaitingListScreen = ({ history, match }) => {
                 <td>{product.bundleQuantity - product.remainingQuantity}/{product.bundleQuantity}
                 </td>
                 <td>
-                <Button type='submit' variant='primary'>
+                <Button type='submit' variant='primary' onClick={() => dispatchHandler(product._id)}>
                     Dispatch
-                  </Button>
+                </Button>
                 </td>
               </tr>
             ))} 

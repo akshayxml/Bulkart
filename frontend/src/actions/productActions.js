@@ -25,6 +25,9 @@ import {
   PRODUCT_DISPATCH_READY_REQUEST,
   PRODUCT_DISPATCH_READY_SUCCESS,
   PRODUCT_DISPATCH_READY_FAIL,
+  PRODUCT_DISPATCH_REQUEST,
+  PRODUCT_DISPATCH_SUCCESS,
+  PRODUCT_DISPATCH_FAIL,
 } from '../constants/productConstants'
 
 export const listProducts = (keyword = '') => async (dispatch) => { 
@@ -89,9 +92,10 @@ export const listDispatchReadyProducts = () => async (dispatch, getState) => {
 
     const config = {
       headers: {
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${userInfo.token}`,
       },
-    }
+    } 
 
     const { data } = await axios.get(`/api/products/dispatchready`, config) 
     
@@ -102,6 +106,37 @@ export const listDispatchReadyProducts = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_DISPATCH_READY_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const dispatchProduct = (id) => async (dispatch, getState) => { 
+  try { 
+    dispatch({ type: PRODUCT_DISPATCH_REQUEST })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+    
+    await axios.put(`/api/products/dispatchProduct/${id}`, null, config) 
+    
+    dispatch({
+      type: PRODUCT_DISPATCH_SUCCESS,
+    })
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_DISPATCH_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

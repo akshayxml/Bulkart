@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Row, Col, ListGroup, Image, Table, Card, Button } from 'react-bootstrap' 
+import { Row, Col, ListGroup, Table, Card, Button } from 'react-bootstrap' 
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -109,14 +108,13 @@ const OrderScreen = ({ match }) => {
                     <th>NAME</th>
                     <th>PRICE</th>
                     <th>STATUS</th>
-                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
                 {order.orderItems.map((product) => (
                   <tr key={product._id}>
                     <td>{product.name}</td>
-                    <td>₹{product.price}</td>
+                    <td>{product.qty} x ₹{product.price} = ₹{product.qty * product.price}</td>
                     <td>
                       {product.product.status === 'Waiting' || 
                             product.product.status === 'Cancelled'? (

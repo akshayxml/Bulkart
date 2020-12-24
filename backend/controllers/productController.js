@@ -21,14 +21,15 @@ const getProducts = asyncHandler(async (req, res) => {
 })
 
 // @desc    Fetch single product
-// @route   GET /api/products/:id
+// @route   GET /api/products/:id/dispatch
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
+  console.log("get products by id")
   const product = await Product.findById(req.params.id).populate(
     'user',
     'name email'
   )
-  
+
   if (product) {
     res.json(product)
   } else {
@@ -88,7 +89,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     remainingQuantity,
   } = req.body
 
-  const product = await Product.findById(req.params.id)
+  const product = await Product.findById(req.params.id) 
 
   if (product) {
     if(JSON.stringify(req.user._id) === JSON.stringify(product.user)){
@@ -158,14 +159,36 @@ const createProductReview = asyncHandler(async (req, res) => {
 const getMyWaitlistProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({ user: req.user._id, remainingQuantity: { $gt: 0, }})
   res.json(products)
-})
+}) 
 
 // @desc    Get logged in vendor's products
 // @route   GET /api/products/dispatchready
 // @access  Private/Admin
 const getDispatchReadyProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({ user: req.user._id, remainingQuantity: 0})
+  const products = await Product.find({ 
+    user: req.user._id, 
+    remainingQuantity: 0,
+    status: 'Placed',
+  })
   res.json(products)
+})
+
+// @desc    Update product status to dispatched
+// @route   PUT /api/products/dispatchProduct/:id
+// @access  Private/Admin
+const dispatchProduct = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id)
+  
+  console.log("sss")
+  if (product) {
+    product.status = 'Dispatched';
+    const updatedProduct = await product.save();
+
+    res.json(updatedProduct)
+  } else {
+    res.status(404)
+    throw new Error('Product not found')
+  }
 })
 
 export {
@@ -177,4 +200,5 @@ export {
   createProductReview,
   getMyWaitlistProducts,
   getDispatchReadyProducts,
+  dispatchProduct,
 }

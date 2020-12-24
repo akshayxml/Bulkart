@@ -29,6 +29,9 @@ import {
     PRODUCT_DISPATCH_READY_SUCCESS,
     PRODUCT_DISPATCH_READY_FAIL,
     PRODUCT_DISPATCH_READY_RESET,
+    PRODUCT_DISPATCH_REQUEST,
+    PRODUCT_DISPATCH_SUCCESS,
+    PRODUCT_DISPATCH_FAIL,
   } from '../constants/productConstants'
   
 /*
@@ -162,6 +165,26 @@ export const productDispatchReadyReducer = (state = { products: [] }, action) =>
       }
     case PRODUCT_DISPATCH_READY_RESET:
       return { products: [] }
+    default:
+      return state
+  }
+}
+
+export const productDispatchReducer = (state = { products: [] }, action) => {
+  switch (action.type) {
+    case PRODUCT_DISPATCH_REQUEST:
+      return {
+        loading: true,
+      }
+    case PRODUCT_DISPATCH_SUCCESS:
+      return {
+        loading: false,
+      }
+    case PRODUCT_DISPATCH_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      }
     default:
       return state
   }

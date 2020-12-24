@@ -60,7 +60,7 @@ const ProductWaitingListScreen = ({ history, match }) => {
     }
   }
 
-  const createProductHandler = (product) => {
+  const createProductHandler = () => {
     dispatch(createProduct()) 
   }
 
