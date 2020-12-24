@@ -2,7 +2,7 @@ const products = [
   {
     name: 'JBL Wireless Over-EarHeadphones',
     image: '/images/jbl.jpg',
-    price: 2899.99,
+    price: 2899.00,
     bundleQuantity: 30,
     remainingQuantity: 30,
     rating: 0,
@@ -11,7 +11,7 @@ const products = [
   {
     name: 'Crocs LiteRide Mesh Slip On',
     image: '/images/crocs.jpg',
-    price: 3599.99,
+    price: 3599.00,
     bundleQuantity: 20,
     remainingQuantity: 20,
     rating: 0,
@@ -29,7 +29,7 @@ const products = [
   {
     name: 'Wildcraft Black HypaShield Supermask',
     image: '/images/mask.jpg',
-    price: 399.99,
+    price: 399.00,
     bundleQuantity: 200,
     remainingQuantity: 200,
     rating: 0,
@@ -38,7 +38,7 @@ const products = [
   {
     name: 'iPhone 11 Pro 256GB Memory',
     image: '/images/phone.jpg',
-    price: 121300.99,
+    price: 121300.00,
     bundleQuantity: 3,
     remainingQuantity: 3,
     rating: 0,
@@ -47,7 +47,7 @@ const products = [
   {
     name: 'Logitech G-Series Gaming Mouse',
     image: '/images/mouse.jpg',
-    price: 3449.99,
+    price: 3449.00,
     bundleQuantity: 25,
     remainingQuantity: 25,
     rating: 0,
@@ -56,7 +56,7 @@ const products = [
   {
     name: 'Fossil Black Chronograph Watch',
     image: '/images/watch.jpg',
-    price: 4559.99,
+    price: 4559.00,
     bundleQuantity: 20,
     remainingQuantity: 20,
     rating: 0,
@@ -65,7 +65,7 @@ const products = [
   {
     name: 'Sony Playstation 4 Pro White Version',
     image: '/images/playstation.jpg',
-    price: 29999.99,
+    price: 29999.00,
     bundleQuantity: 10,
     remainingQuantity: 10,
     rating: 0,

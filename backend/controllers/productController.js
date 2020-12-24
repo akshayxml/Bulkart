@@ -24,7 +24,6 @@ const getProducts = asyncHandler(async (req, res) => {
 // @route   GET /api/products/:id/dispatch
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
-  console.log("get products by id")
   const product = await Product.findById(req.params.id).populate(
     'user',
     'name email'
