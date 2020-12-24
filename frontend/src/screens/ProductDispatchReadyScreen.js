@@ -18,7 +18,7 @@ const ProductDispatchReadyScreen = ({ history }) => {
   const { userInfo } = userLogin
   
   const productDispatch = useSelector((state) => state.productDispatch)
-  const { loading: dispatchLoading, error: dispatchError } = productDispatch
+  const { error: dispatchError } = productDispatch
 
   useEffect(() => {
     if (!userInfo.isVendor) { 
