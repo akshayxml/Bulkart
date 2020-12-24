@@ -1,0 +1,1 @@
+![Screenshot](/Bulkart/frontend/public/Screenshot.png)
