@@ -56,6 +56,9 @@ const ProductWaitingListScreen = ({ history, match }) => {
                 <td>{product.bundleQuantity - product.remainingQuantity}/{product.bundleQuantity}
                 </td>
                 <td>
+                <Button type='submit' variant='primary'>
+                    Dispatch
+                  </Button>
                 </td>
               </tr>
             ))} 
