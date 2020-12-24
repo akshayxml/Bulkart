@@ -34,7 +34,7 @@ const ProductEditScreen = ({ match, history }) => {
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET })
-      history.push('/admin/productlist')
+      history.push('/admin/productWaitinglist')
     } else {
       if (!product.name || product._id !== productId) {
         dispatch(listProductDetails(productId))
