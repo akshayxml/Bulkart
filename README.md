@@ -1,1 +1,1 @@
-![Screenshot](/Bulkart/frontend/public/Screenshot.png)
+![Screenshot](/frontend/public/Screenshot.png)
