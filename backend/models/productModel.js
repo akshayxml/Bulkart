@@ -28,6 +28,11 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    status: {
+      type: String,
+      required: true,
+      default: 'Waiting',
+    },
     image: {
       type: String,
       required: true,

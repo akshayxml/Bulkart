@@ -20,7 +20,6 @@ import {
   ORDER_DELIVER_REQUEST,
 } from '../constants/orderConstants'
 import { CART_RESET,} from '../constants/cartConstants'
-import OrderScreen from '../screens/OrderScreen'
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {
@@ -110,7 +109,7 @@ export const payOrder = (orderId) => async (
     } 
 
     const paymentResult = {
-      "id" : "test",
+      "id" : "development",
       "status" : "COMPLETED",
     };
 

@@ -19,9 +19,12 @@ import {
   PRODUCT_CREATE_REVIEW_REQUEST,
   PRODUCT_CREATE_REVIEW_SUCCESS,
   PRODUCT_CREATE_REVIEW_FAIL,
-  PRODUCT_LIST_MY_REQUEST,
-  PRODUCT_LIST_MY_SUCCESS,
-  PRODUCT_LIST_MY_FAIL,
+  PRODUCT_MY_WAITLIST_REQUEST,
+  PRODUCT_MY_WAITLIST_SUCCESS,
+  PRODUCT_MY_WAITLIST_FAIL,
+  PRODUCT_DISPATCH_READY_REQUEST,
+  PRODUCT_DISPATCH_READY_SUCCESS,
+  PRODUCT_DISPATCH_READY_FAIL,
 } from '../constants/productConstants'
 
 export const listProducts = (keyword = '') => async (dispatch) => { 
@@ -45,9 +48,9 @@ export const listProducts = (keyword = '') => async (dispatch) => {
   }
 }
 
-export const listMyProducts = () => async (dispatch, getState) => { 
+export const listWaitlistProducts = () => async (dispatch, getState) => { 
   try { 
-    dispatch({ type: PRODUCT_LIST_MY_REQUEST })
+    dispatch({ type: PRODUCT_MY_WAITLIST_REQUEST })
 
     const {
       userLogin: { userInfo },
@@ -59,15 +62,46 @@ export const listMyProducts = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`/api/products/myproducts`, config) 
+    const { data } = await axios.get(`/api/products/mywaitlistproducts`, config) 
     
     dispatch({
-      type: PRODUCT_LIST_MY_SUCCESS,
+      type: PRODUCT_MY_WAITLIST_SUCCESS,
       payload: data,
     })
   } catch (error) {
     dispatch({
-      type: PRODUCT_LIST_MY_FAIL,
+      type: PRODUCT_MY_WAITLIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const listDispatchReadyProducts = () => async (dispatch, getState) => { 
+  try { 
+    dispatch({ type: PRODUCT_DISPATCH_READY_REQUEST })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.get(`/api/products/dispatchready`, config) 
+    
+    dispatch({
+      type: PRODUCT_DISPATCH_READY_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_DISPATCH_READY_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

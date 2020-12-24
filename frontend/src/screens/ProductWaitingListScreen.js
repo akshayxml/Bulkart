@@ -7,11 +7,11 @@ import Loader from '../components/Loader'
 import {
   deleteProduct,
   createProduct,
-  listMyProducts,
+  listWaitlistProducts,
 } from '../actions/productActions'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
-const ProductListScreen = ({ history, match }) => {
+const ProductWaitingListScreen = ({ history, match }) => {
   const dispatch = useDispatch()
  
   const productList = useSelector((state) => state.productListMy)
@@ -43,7 +43,7 @@ const ProductListScreen = ({ history, match }) => {
     if (successCreate) {
       history.push(`/admin/product/${createdProduct._id}/edit`)
     } else {
-      dispatch(listMyProducts())
+      dispatch(listWaitlistProducts())
     }
   }, [
     dispatch,
@@ -88,18 +88,19 @@ const ProductListScreen = ({ history, match }) => {
         <Table striped bordered hover responsive className='table-sm'>
           <thead>
             <tr>
-              <th>ID</th>
               <th>NAME</th>
               <th>PRICE</th>
+              <th>ORDERED</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {products.map((product) => (
               <tr key={product._id}>
-                <td>{product._id}</td>
                 <td>{product.name}</td>
                 <td>₹{product.price}</td>
+                <td>{product.bundleQuantity - product.remainingQuantity}/{product.bundleQuantity}
+                </td>
                 <td>
                   <LinkContainer to={`/admin/product/${product._id}/edit`}>
                     <Button variant='light' className='btn-sm'>
@@ -123,4 +124,4 @@ const ProductListScreen = ({ history, match }) => {
   )
 }
 
-export default ProductListScreen
+export default ProductWaitingListScreen

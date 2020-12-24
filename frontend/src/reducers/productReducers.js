@@ -21,10 +21,14 @@ import {
     PRODUCT_CREATE_REVIEW_SUCCESS,
     PRODUCT_CREATE_REVIEW_FAIL,
     PRODUCT_CREATE_REVIEW_RESET,
-    PRODUCT_LIST_MY_REQUEST,
-    PRODUCT_LIST_MY_SUCCESS,
-    PRODUCT_LIST_MY_FAIL,
-    PRODUCT_LIST_MY_RESET, 
+    PRODUCT_MY_WAITLIST_REQUEST,
+    PRODUCT_MY_WAITLIST_SUCCESS,
+    PRODUCT_MY_WAITLIST_FAIL,
+    PRODUCT_MY_WAITLIST_RESET, 
+    PRODUCT_DISPATCH_READY_REQUEST,
+    PRODUCT_DISPATCH_READY_SUCCESS,
+    PRODUCT_DISPATCH_READY_FAIL,
+    PRODUCT_DISPATCH_READY_RESET,
   } from '../constants/productConstants'
   
 /*
@@ -119,21 +123,44 @@ export const productReviewCreateReducer = (state = {}, action) => {
 
 export const productListMyReducer = (state = { products: [] }, action) => {
   switch (action.type) {
-    case PRODUCT_LIST_MY_REQUEST:
+    case PRODUCT_MY_WAITLIST_REQUEST:
       return {
         loading: true,
       }
-    case PRODUCT_LIST_MY_SUCCESS:
+    case PRODUCT_MY_WAITLIST_SUCCESS:
       return {
         loading: false,
         products: action.payload,
       }
-    case PRODUCT_LIST_MY_FAIL:
+    case PRODUCT_MY_WAITLIST_FAIL:
       return {
         loading: false,
         error: action.payload,
       }
-    case PRODUCT_LIST_MY_RESET:
+    case PRODUCT_MY_WAITLIST_RESET:
+      return { products: [] }
+    default:
+      return state
+  }
+}
+
+export const productDispatchReadyReducer = (state = { products: [] }, action) => {
+  switch (action.type) {
+    case PRODUCT_DISPATCH_READY_REQUEST:
+      return {
+        loading: true,
+      }
+    case PRODUCT_DISPATCH_READY_SUCCESS:
+      return {
+        loading: false,
+        products: action.payload,
+      }
+    case PRODUCT_DISPATCH_READY_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      }
+    case PRODUCT_DISPATCH_READY_RESET:
       return { products: [] }
     default:
       return state

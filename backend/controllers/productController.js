@@ -152,14 +152,21 @@ const createProductReview = asyncHandler(async (req, res) => {
   }
 })
 
-// @desc    Get logged in vendos' products
-// @route   GET /api/products/myproducts
-// @access  Private
-const getMyProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({ user: req.user._id })
+// @desc    Get logged in vendor's waitlist products
+// @route   GET /api/products/mywaitingproducts
+// @access  Private/Admin
+const getMyWaitlistProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({ user: req.user._id, remainingQuantity: { $gt: 0, }})
   res.json(products)
 })
 
+// @desc    Get logged in vendor's products
+// @route   GET /api/products/dispatchready
+// @access  Private/Admin
+const getDispatchReadyProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({ user: req.user._id, remainingQuantity: 0})
+  res.json(products)
+})
 
 export {
   getProducts,
@@ -168,5 +175,6 @@ export {
   createProduct,
   updateProduct,
   createProductReview,
-  getMyProducts
+  getMyWaitlistProducts,
+  getDispatchReadyProducts,
 }

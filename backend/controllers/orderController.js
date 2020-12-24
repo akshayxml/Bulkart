@@ -73,6 +73,10 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
       const product = await Product.findById(item.product);
       product.remainingQuantity -= item.qty;
       
+      if(product.remainingQuantity === 0){
+        product.status = 'Placed';
+      }
+
       await product.save();
     }
 
