@@ -38,7 +38,7 @@ const getProductById = asyncHandler(async (req, res) => {
   }
 })
 
-// @desc    Delete a product
+// @desc    Delist a product
 // @route   DELETE /api/products/:id
 // @access  Private/Admin
 const deleteProduct = asyncHandler(async (req, res) => {
@@ -46,7 +46,10 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
   if (product) {
     if(JSON.stringify(req.user._id) === JSON.stringify(product.user)){
-      await product.remove()
+      //await product.remove()
+      product.status = 'Cancelled'
+      product.remainingQuantity = 0
+      await product.save()
       res.json({ message: 'Product removed' })
     }
     else{
@@ -157,7 +160,11 @@ const createProductReview = asyncHandler(async (req, res) => {
 // @route   GET /api/products/mywaitingproducts
 // @access  Private/Admin
 const getMyWaitlistProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({ user: req.user._id, remainingQuantity: { $gt: 0, }})
+  const products = await Product.find({ 
+    user: req.user._id, 
+    remainingQuantity: { $gt: 0, },
+    status: { $ne: 'Cancelled',},
+  })
   res.json(products)
 }) 
 
