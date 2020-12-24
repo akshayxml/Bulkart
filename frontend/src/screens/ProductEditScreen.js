@@ -56,7 +56,7 @@ const ProductEditScreen = ({ match, history }) => {
 
     try {
       const config = {
-        headers: {
+        headers: { 
           'Content-Type': 'multipart/form-data',
         },
       }

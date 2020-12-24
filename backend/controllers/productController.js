@@ -15,7 +15,7 @@ const getProducts = asyncHandler(async (req, res) => {
       }
     : {}
 
-  const products = await Product.find({ ...keyword })
+  const products = await Product.find({ ...keyword, remainingQuantity: { $gt: 0} })
 
   res.json(products)
 })

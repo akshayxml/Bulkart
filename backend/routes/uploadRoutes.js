@@ -1,7 +1,7 @@
 import path from 'path'
+import asyncHandler from 'express-async-handler'
 import express from 'express'
 import multer from 'multer'
-import asyncHandler from 'express-async-handler'
 const router = express.Router()
 import pkg from 'cloudinary' 
 
@@ -45,7 +45,7 @@ const upload = multer({
 })
 
 router.post('/', upload.single('image'), asyncHandler (async (req, res) => {
-  const uploadPhoto = await cloud.uploader.upload(`${req.file.path}`)
+  const uploadPhoto = await cloudinary.uploader.upload(`${req.file.path}`)
   // console.log(uploadPhoto) // This will give you all the information back from the uploaded photo result
   // console.log(uploadPhoto.url)  // This is what we want to send back now in the  res.send
   res.send(uploadPhoto.url) 
