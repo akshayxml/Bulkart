@@ -1,6 +1,7 @@
 # [Bulkart - Bulk Purchasing App](https://bulkart.herokuapp.com)
 
 eCommerce platform built with the MERN stack & Redux.
+[Check it out!](https://bulkart.herokuapp.com)
 ![Screenshot](/frontend/public/Screenshot.png)
 
 ## Usage
