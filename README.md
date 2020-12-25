@@ -5,6 +5,7 @@ eCommerce platform built with the MERN stack & Redux.\
 
 ![Screenshot](/frontend/public/Screenshot.png)
 
+Table of Contents:
 - [Bulkart - Bulk Purchasing App](#bulkart---bulk-purchasing-app)
   - [Usage](#usage)
     - [ES Modules in Node](#es-modules-in-node)
