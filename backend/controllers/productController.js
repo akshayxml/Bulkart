@@ -21,7 +21,7 @@ const getProducts = asyncHandler(async (req, res) => {
 })
 
 // @desc    Fetch single product
-// @route   GET /api/products/:id/dispatch
+// @route   GET /api/products/:id 
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id).populate(
@@ -167,7 +167,7 @@ const getMyWaitlistProducts = asyncHandler(async (req, res) => {
   res.json(products)
 }) 
 
-// @desc    Get logged in vendor's products
+// @desc    Get logged in vendor's dispatch ready products
 // @route   GET /api/products/dispatchready
 // @access  Private/Admin
 const getDispatchReadyProducts = asyncHandler(async (req, res) => {
