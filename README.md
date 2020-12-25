@@ -158,7 +158,7 @@ All dispatched orders are visible in another view.
 #### 3.3. View Order Status
 
 All orders are visible on user's profile to the user. All the products under a particular order have a dispatch status alongside them:
-- Waiting,P laced, Dispatched, Cancelled
+- Waiting, Placed, Dispatched, Cancelled
   - Waiting (If not enough orders have been placed meeting the minimum bulk quantity requirement by the seller)
     - Quantity left for the order to get placed is also shown
   - Placed (If the quantity requirements are met but is yet to get dispatched by the seller in his/her portal)
