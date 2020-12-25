@@ -73,7 +73,7 @@ jane@example.com (Customer)
 
 There are two types of users - Vendors and Customers. Each of them have their own use-cases.
 
-### 1.1. Login Page
+#### 1.1. Login Page
 
 It has an option to enter the username and password, and then login. There is also an option to register in case the user does not have an existing account.
 
@@ -129,9 +129,9 @@ All orders are visible on user's profile to the user. All the products under a p
   - Dispatched (If the seller accepts the order in his/her portal)
   - Cancelled (If the seller cancels the order in his/her portal)
 
-## FRONTEND
+## Frontend
 
-### COMPONENTS
+### Components
 
 - Home
 - Login
@@ -148,11 +148,11 @@ All orders are visible on user's profile to the user. All the products under a p
 - Product Edit Screen
 - Order Details
 
-## BACKEND
+## Backend
 
-### MODEL DESCRIPTION
+### Model Description
 
-#### USER
+#### User
 
 | NAME     | TYPE    | REQUIRED | OTHERS                       |
 | -------- | ------  | -------- | ---------------------------- |
@@ -161,7 +161,7 @@ All orders are visible on user's profile to the user. All the products under a p
 | email    | String  | true     | unique: true                 |
 | isVendor | Boolean | true     | default: false               |
 
-#### PRODUCT
+#### Product
 
 | NAME               | TYPE        | REQUIRED | OTHERS                                 |
 | ------------------ | ------      | -------- | -------------------------------------- |
@@ -176,7 +176,8 @@ All orders are visible on user's profile to the user. All the products under a p
 | bundleQuantity     | Number      | true     | default: 0                             |
 | remainingQuantity  | Number      | true     | -                                      |
 
-### REVIEWS
+#### Reviews
+
 | NAME               | TYPE        | REQUIRED | OTHERS                                 |
 | ------------------ | ------      | -------- | -------------------------------------- |
 | name               | String      | true     |                                        |
@@ -184,7 +185,7 @@ All orders are visible on user's profile to the user. All the products under a p
 | comment            | String      | true     |                                        |
 | user               | ObjectId    | true     | ref: User                              |
 
-#### ORDER
+#### Order
 
 | NAME              | TYPE         | REQUIRED | OTHERS          |
 | --------          | ------       | -------- | ------          |
@@ -198,7 +199,7 @@ All orders are visible on user's profile to the user. All the products under a p
 | isPaid            | Boolean      |   true   | default: false  |
 | shippingPrice     | Date         |     -    |     -           |
 
-#### ORDER ITEMS
+#### Order Items
 
 | NAME              | TYPE         | REQUIRED | OTHERS          |
 | --------          | ------       | -------- | ------          |
@@ -207,7 +208,7 @@ All orders are visible on user's profile to the user. All the products under a p
 | price             | Number       |   true   |    -            |
 | product           | ObjectId     |   true   |  Ref: Product   |
 
-### SHIPPING ADDRESS
+#### Shipping Address
 
 | NAME             | TYPE         | REQUIRED | OTHERS          |
 | --------         | ------       | -------- | ------          |
@@ -216,9 +217,9 @@ All orders are visible on user's profile to the user. All the products under a p
 | postalCode       | String       |   true   |    -            |
 | country          | String       |   true   |    -            |
 
-### API ROUTES
+### API Routes
 
-#### USERS
+#### Users
 
 | API_ROUTE          | TYPE | DESCRIPTION                        |
 | ------------------ | ---- | ---------------------------------- |
@@ -227,7 +228,7 @@ All orders are visible on user's profile to the user. All the products under a p
 | /api/users/profile | GET  | Get user profile                   |
 | /api/users/profile | PUT  | Update user profile                |
 
-#### PRODUCTS
+#### Products
 
 | API_ROUTE                         | TYPE   | DESCRIPTION                                    |
 | ----------------------------      | ------ | -----------------------------------------------|
@@ -242,7 +243,7 @@ All orders are visible on user's profile to the user. All the products under a p
 | /api/products/dispatched          | GET    | Get logged in vendor's dispatched products     |
 | /api/products/dispatchProduct/:id | PUT    | Update product status to dispatched            |
 
-#### ORDERS
+#### Orders
 
 | API_ROUTE                  | TYPE   | DESCRIPTION                     |
 | -------------------------- | ------ | ------------------------------- |
